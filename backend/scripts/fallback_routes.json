@@ -1,0 +1,299 @@
+{
+    "_comment": "Hardcoded OSRM-style GeoJSON fallback routes for Maya's demo. Guarantees zero-network-dependency demo.",
+    "pre_disruption": {
+        "home_to_farmers_market": {
+            "mode": "TRANSIT",
+            "costCents": 250,
+            "durationSec": 1080,
+            "distanceMeters": 3200,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.4194,
+                        37.7749
+                    ],
+                    [
+                        -122.4150,
+                        37.7770
+                    ],
+                    [
+                        -122.4100,
+                        37.7800
+                    ],
+                    [
+                        -122.4050,
+                        37.7830
+                    ],
+                    [
+                        -122.4000,
+                        37.7870
+                    ],
+                    [
+                        -122.3970,
+                        37.7920
+                    ],
+                    [
+                        -122.3937,
+                        37.7955
+                    ]
+                ]
+            }
+        },
+        "farmers_market_to_art_museum": {
+            "mode": "TRANSIT",
+            "costCents": 0,
+            "durationSec": 720,
+            "distanceMeters": 1800,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.3937,
+                        37.7955
+                    ],
+                    [
+                        -122.3960,
+                        37.7930
+                    ],
+                    [
+                        -122.3980,
+                        37.7910
+                    ],
+                    [
+                        -122.4000,
+                        37.7880
+                    ],
+                    [
+                        -122.4011,
+                        37.7857
+                    ]
+                ]
+            }
+        },
+        "art_museum_to_rooftop_bar": {
+            "mode": "TRANSIT",
+            "costCents": 250,
+            "durationSec": 900,
+            "distanceMeters": 1200,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.4011,
+                        37.7857
+                    ],
+                    [
+                        -122.4030,
+                        37.7865
+                    ],
+                    [
+                        -122.4050,
+                        37.7872
+                    ],
+                    [
+                        -122.4070,
+                        37.7880
+                    ],
+                    [
+                        -122.4090,
+                        37.7890
+                    ]
+                ]
+            }
+        },
+        "rooftop_bar_to_home": {
+            "mode": "TRANSIT",
+            "costCents": 250,
+            "durationSec": 1200,
+            "distanceMeters": 2500,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.4090,
+                        37.7890
+                    ],
+                    [
+                        -122.4110,
+                        37.7870
+                    ],
+                    [
+                        -122.4130,
+                        37.7840
+                    ],
+                    [
+                        -122.4150,
+                        37.7810
+                    ],
+                    [
+                        -122.4170,
+                        37.7780
+                    ],
+                    [
+                        -122.4194,
+                        37.7749
+                    ]
+                ]
+            }
+        }
+    },
+    "post_disruption": {
+        "farmers_market_to_art_museum_ebike": {
+            "mode": "EBIKE",
+            "costCents": 500,
+            "durationSec": 1200,
+            "distanceMeters": 2100,
+            "frictionLevel": "MEDIUM",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.3937,
+                        37.7955
+                    ],
+                    [
+                        -122.3950,
+                        37.7940
+                    ],
+                    [
+                        -122.3965,
+                        37.7925
+                    ],
+                    [
+                        -122.3980,
+                        37.7905
+                    ],
+                    [
+                        -122.3995,
+                        37.7885
+                    ],
+                    [
+                        -122.4005,
+                        37.7870
+                    ],
+                    [
+                        -122.4011,
+                        37.7857
+                    ]
+                ]
+            }
+        },
+        "art_museum_to_home_rideshare": {
+            "mode": "RIDESHARE",
+            "costCents": 750,
+            "durationSec": 1500,
+            "distanceMeters": 3100,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.4011,
+                        37.7857
+                    ],
+                    [
+                        -122.4040,
+                        37.7845
+                    ],
+                    [
+                        -122.4080,
+                        37.7825
+                    ],
+                    [
+                        -122.4120,
+                        37.7800
+                    ],
+                    [
+                        -122.4150,
+                        37.7780
+                    ],
+                    [
+                        -122.4175,
+                        37.7760
+                    ],
+                    [
+                        -122.4194,
+                        37.7749
+                    ]
+                ]
+            }
+        },
+        "farmers_market_to_art_museum_rideshare": {
+            "mode": "RIDESHARE",
+            "costCents": 650,
+            "durationSec": 600,
+            "distanceMeters": 1900,
+            "frictionLevel": "LOW",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.3937,
+                        37.7955
+                    ],
+                    [
+                        -122.3960,
+                        37.7940
+                    ],
+                    [
+                        -122.3985,
+                        37.7915
+                    ],
+                    [
+                        -122.4000,
+                        37.7890
+                    ],
+                    [
+                        -122.4011,
+                        37.7857
+                    ]
+                ]
+            }
+        },
+        "art_museum_to_home_ebike": {
+            "mode": "EBIKE",
+            "costCents": 450,
+            "durationSec": 1800,
+            "distanceMeters": 3400,
+            "frictionLevel": "MEDIUM",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -122.4011,
+                        37.7857
+                    ],
+                    [
+                        -122.4050,
+                        37.7840
+                    ],
+                    [
+                        -122.4090,
+                        37.7820
+                    ],
+                    [
+                        -122.4120,
+                        37.7800
+                    ],
+                    [
+                        -122.4150,
+                        37.7785
+                    ],
+                    [
+                        -122.4170,
+                        37.7770
+                    ],
+                    [
+                        -122.4194,
+                        37.7749
+                    ]
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,185 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   ELASTIC COMPONENT CLASSES — Reusable design primitives
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. Glass Card ──────────────────────────────────────────────── */
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 212, 255, 0.12);
+    border-radius: 16px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ─── 2. Glow Border — animated pulsing border ───────────────────── */
+.glow-border {
+    animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+
+    0%,
+    100% {
+        border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    50% {
+        border-color: rgba(0, 212, 255, 0.6);
+        box-shadow: var(--glow-electric);
+    }
+}
+
+/* ─── 3. Mono Data — for numbers, times, costs, ETAs ─────────────── */
+.mono-data {
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── 4. Friction Badges ─────────────────────────────────────────── */
+.friction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+}
+
+.friction-low,
+.friction-badge.LOW {
+    background: rgba(0, 255, 148, 0.1);
+    color: var(--accent-safe);
+    border: 1px solid rgba(0, 255, 148, 0.3);
+}
+
+.friction-medium,
+.friction-badge.MEDIUM {
+    background: rgba(255, 184, 0, 0.1);
+    color: var(--accent-gold);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+.friction-high,
+.friction-badge.HIGH {
+    background: rgba(255, 107, 43, 0.15);
+    color: var(--accent-warning);
+    border: 1px solid rgba(255, 107, 43, 0.4);
+    box-shadow: var(--glow-warning);
+}
+
+/* ─── 5. Disruption Pulse — replanning state animation ───────────── */
+.disruption-pulse {
+    animation: disruptionPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes disruptionPulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ─── 6. Transport Mode Colors ───────────────────────────────────── */
+.mode-transit {
+    color: #60A5FA;
+}
+
+.mode-ebike {
+    color: var(--accent-safe);
+}
+
+.mode-rideshare {
+    color: #A78BFA;
+}
+
+.mode-walking {
+    color: var(--text-secondary);
+}
+
+/* ─── 7. Display Heading ─────────────────────────────────────────── */
+.heading-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.heading-display-xl {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+/* ─── 8. Status Indicators ───────────────────────────────────────── */
+.status-glow-safe {
+    box-shadow: var(--glow-safe);
+}
+
+.status-glow-warning {
+    box-shadow: var(--glow-warning);
+}
+
+.status-glow-danger {
+    box-shadow: var(--glow-danger);
+}
+
+/* ─── 9. Utility: Label ──────────────────────────────────────────── */
+.label-caps {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+}
+
+/* ─── 10. Button Glow Hover ──────────────────────────────────────── */
+.btn-electric {
+    background: var(--accent-electric);
+    color: var(--bg-void);
+    font-weight: 700;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-electric:hover {
+    box-shadow: var(--glow-electric);
+    transform: translateY(-1px);
+}
+
+.btn-electric:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-electric::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 50%);
+    pointer-events: none;
+}

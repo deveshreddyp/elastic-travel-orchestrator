@@ -1,0 +1,2 @@
+# Placeholder — trained model artifacts go here
+# Run `python -m ml.train_friction` to generate friction_model.pkl

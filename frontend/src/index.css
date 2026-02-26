@@ -1,0 +1,773 @@
+@import "tailwindcss";
+
+/* ─── Elastic Travel Orchestrator — App-specific Styles ─────────── */
+/* Design tokens, global reset, and component primitives are in:
+   styles/design-tokens.css, styles/globals.css, styles/components.css */
+
+/* Backwards-compatible aliases — map old var names to new tokens */
+:root {
+  --color-bg: var(--bg-void);
+  --color-surface: var(--bg-surface);
+  --color-surface-hover: var(--bg-elevated);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-border: var(--border-subtle);
+  --color-border-active: var(--border-active);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-dim);
+
+  --color-accent: var(--accent-electric);
+  --color-accent-hover: var(--accent-pulse);
+  --color-success: var(--accent-safe);
+  --color-warning: var(--accent-gold);
+  --color-danger: var(--accent-danger);
+
+  --color-walk: var(--accent-safe);
+  --color-transit: #60A5FA;
+  --color-ebike: #A78BFA;
+  --color-rideshare: var(--accent-gold);
+
+  --font-family: var(--font-body);
+
+  --shadow-glow: var(--shadow-glow);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
+   CINEMATIC ONBOARDING FLOW
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.onboarding-root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 40px 20px 80px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.cinematic-container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 5vh;
+}
+
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-safe);
+  box-shadow: var(--glow-safe);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.cinematic-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 16px;
+  max-width: 90%;
+}
+
+.cinematic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cinematic-form-section {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.section-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: var(--bg-void);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+  font-size: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.cinematic-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.cinematic-input:focus {
+  outline: none;
+  border-color: var(--accent-electric);
+  box-shadow: 0 0 0 1px var(--accent-electric), var(--glow-electric);
+}
+
+.cinematic-input.confirmed {
+  border-color: var(--accent-safe);
+}
+
+.input-with-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn-gps-cinematic {
+  position: absolute;
+  right: 8px;
+  padding: 8px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-gps-cinematic:hover {
+  background: var(--bg-glass);
+}
+
+.confirm-check {
+  position: absolute;
+  right: 16px;
+  color: var(--accent-safe);
+  font-weight: bold;
+}
+
+.nominatim-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.nominatim-results button {
+  padding: 12px 16px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nominatim-results button:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.stop-row {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.stop-drag-handle {
+  color: var(--text-dim);
+  padding-top: 14px;
+  cursor: grab;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.stop-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.priority-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pill {
+  padding: 6px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pill.must.active {
+  border-color: var(--accent-electric);
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--accent-electric);
+}
+
+.pill.nice.active {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.btn-remove-stop {
+  padding: 14px 0 0 0;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.btn-remove-stop:hover {
+  color: var(--accent-danger);
+}
+
+.btn-add-stop-cinematic {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-add-stop-cinematic:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.cinematic-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.budget-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.budget-prefix {
+  font-size: 24px;
+  color: var(--text-secondary);
+}
+
+.huge-input {
+  font-size: 24px !important;
+  font-weight: 600;
+  padding: 12px 16px !important;
+}
+
+.input-hint {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.modes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mode-chip {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mode-chip-icon {
+  font-size: 24px;
+}
+
+.mode-chip.active {
+  border-color: var(--accent-electric);
+  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.btn-electric {
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(0, 240, 255, 0.2));
+  border: 1px solid var(--accent-electric);
+  border-radius: var(--radius-lg);
+  color: var(--accent-electric);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--glow-electric);
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-electric:hover {
+  background: var(--accent-electric);
+  color: #000;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+.error-banner {
+  padding: 16px;
+  background: rgba(255, 51, 102, 0.1);
+  border: 1px solid var(--accent-danger);
+  border-radius: var(--radius-md);
+  color: var(--accent-danger);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Loading Sequence */
+.loading-sequence {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-void);
+  z-index: 1000;
+}
+
+.spinner-large {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--accent-electric);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40px;
+}
+
+.loading-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 280px;
+}
+
+.loading-steps div {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.loading-steps .active {
+  border-color: var(--accent-electric);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  color: var(--text-primary);
+}
+
+.loading-steps .dim {
+  opacity: 0.3;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   APP LAYOUT (ActiveDayView Split-Screen)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.active-day-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg-void);
+}
+
+.mission-top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+}
+
+.top-bar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.nominal {
+  background: var(--accent-safe);
+  box-shadow: var(--glow-safe);
+}
+
+.status-dot.replanning {
+  background: var(--accent-gold);
+  box-shadow: var(--glow-warning);
+  animation: pulse-dot 1s infinite alternate;
+}
+
+.status-dot.disconnected {
+  background: var(--accent-danger);
+  box-shadow: var(--glow-danger);
+  animation: pulse-dot 0.5s infinite alternate;
+}
+
+.status-text {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.top-bar-now {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.top-bar-instruments {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.instrument-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.instrument-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-subtle);
+}
+
+.instrument-value {
+  font-size: 18px;
+}
+
+.budget-compact {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mission-sidebar {
+  border-right: 1px solid var(--border-subtle);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mission-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-google {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-void) !important;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #080B12 !important;
+}
+
+.leaflet-tile {
+  filter: brightness(0.85) saturate(0.9) hue-rotate(10deg);
+}
+
+/* ─── Leaflet Custom Marker & Position Dot Animations ─── */
+@keyframes markerDrop {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: translateX(-3px);
+  }
+
+  70% {
+    transform: translateX(3px);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+.marker-dropped {
+  animation: markerDrop 0.5s ease forwards;
+}
+
+@keyframes positionRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.live-position-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-electric);
+  border-radius: 50%;
+  position: relative;
+}
+
+.live-position-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  animation: positionRipple 3s infinite;
+}
+
+/* Replanning Overlay inside map */
+.replanning-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 23, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 400;
+  /* Above map layer */
+}
+
+/* Resets for Timeline within the new layout */
+.timeline-container {
+  padding: 24px;
+}
+
+/* ─── Timeline Card Diff Animations ─── */
+.leg-card {
+  border-left: 2px solid transparent;
+}
+
+.leg-new {
+  animation: legNewGlow 3s ease forwards;
+}
+
+@keyframes legNewGlow {
+  0% {
+    border-left-color: transparent;
+    box-shadow: none;
+  }
+
+  15% {
+    border-left-color: var(--accent-electric);
+    box-shadow: -15px 0 30px -15px rgba(0, 240, 255, 0.6);
+  }
+
+  100% {
+    border-left-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.leg-changed {
+  animation: legChangedFlash 0.5s ease forwards;
+}
+
+@keyframes legChangedFlash {
+  0% {
+    background: rgba(255, 184, 0, 0.08);
+    /* --accent-gold with low opacity */
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+/* ─── Mode Specific Colors for Timeline ─── */
+.mode-walking {
+  color: var(--color-walk);
+}
+
+.mode-transit {
+  color: var(--color-transit);
+}
+
+.mode-ebike {
+  color: var(--color-ebike);
+}
+
+.mode-rideshare {
+  color: var(--color-rideshare);
+}
+
+/* ─── Disruption Card (Positioning adjustment for new layout) ─── */
+.disruption-card {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+@keyframes countdown-ring {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 125.6;
+  }
+}
+
+/* ─── Demo Control Panel (Positioning adjustment) ─── */
+.demo-panel-overlay {
+  bottom: 32px;
+  right: 32px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile First
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .mission-grid {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cinematic-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40vh 1fr;
+  }
+
+  .mission-sidebar {
+    border-right: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .top-bar-now {
+    display: none;
+    /* Hide middle segment on mobile */
+  }
+
+  .mission-top-bar {
+    padding: 12px 16px;
+  }
+
+  .disruption-card {
+    width: calc(100% - 32px);
+    bottom: 16px;
+  }
+}

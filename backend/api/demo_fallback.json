@@ -1,0 +1,44 @@
+{
+    "home_to_farmers_market_transit": {
+        "costCents": 275,
+        "durationSec": 1080,
+        "polyline": "mfr~FnechVnAeB|@yBdAkC",
+        "available": true
+    },
+    "farmers_market_to_art_museum_transit": {
+        "costCents": 275,
+        "durationSec": 960,
+        "polyline": "eer~FbachVqBwD_CiE",
+        "available": true
+    },
+    "farmers_market_to_art_museum_ebike": {
+        "costCents": 180,
+        "durationSec": 720,
+        "polyline": "eer~FbachVqBwDgBkD",
+        "available": true
+    },
+    "art_museum_to_rooftop_bar_transit": {
+        "costCents": 275,
+        "durationSec": 840,
+        "polyline": "qmr~Ft_chV_AeByAsCaB",
+        "available": true
+    },
+    "art_museum_to_rooftop_bar_rideshare": {
+        "costCents": 850,
+        "durationSec": 480,
+        "polyline": "qmr~Ft_chV_AeByAsC",
+        "available": true
+    },
+    "rooftop_bar_to_home_transit": {
+        "costCents": 275,
+        "durationSec": 1200,
+        "polyline": "amr~FhbchVdBfCpBtD",
+        "available": true
+    },
+    "rooftop_bar_to_home_rideshare": {
+        "costCents": 1200,
+        "durationSec": 600,
+        "polyline": "amr~FhbchVdBfCpBtD",
+        "available": true
+    }
+}
