@@ -358,7 +358,7 @@ Maya never had to think about it.
 | 🧑‍💻 | Rohan |
 | 🧑‍💻 | Devesh |
 
-Built for the **AMD Slingshot Hackathon 2025** · Theme 7: Consumer
+Built for the **AMD Slingshot Hackathon 2026** · Theme 7: Consumer
 
 ---
 
